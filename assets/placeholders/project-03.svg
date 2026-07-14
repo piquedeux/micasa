@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Bomber jacket placeholder">
+  <rect width="1200" height="1500" fill="#fff"/>
+  <path d="M0 0c240 70 462 74 666 12 183-56 361-42 534 43V0zM0 1175c205 74 391 82 558 23 242-85 456-71 642 41v261H0z" fill="#e10600" opacity=".13"/>
+  <rect x="105" y="110" width="990" height="1280" fill="none" stroke="#111" stroke-width="18"/>
+  <path d="M315 420l168-88h236l166 88 80 516-205 42-48-215H489l-48 215-205-42z" fill="#111"/>
+  <path d="M483 332c36 88 82 132 138 132s88-44 98-132M489 763h223M315 420c89 46 147 100 174 162M885 420c-89 46-147 100-174 162" fill="none" stroke="#fff" stroke-width="18"/>
+  <path d="M210 1096h690M210 1152h430M210 1208h560" stroke="#111" stroke-width="17"/>
+  <path d="M210 250h405v88H210z" fill="#e10600"/>
+</svg>

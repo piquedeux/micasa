@@ -1,0 +1,5 @@
+config.local.php
+data/shopify-cache.json
+assets/uploads/*
+!assets/uploads/.gitkeep
+.DS_Store

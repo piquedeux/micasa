@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Live art placeholder">
+  <rect width="1200" height="1500" fill="#fff"/>
+  <path d="M0 0c190 44 363 50 520 19 239-47 466-11 680 108V0zM0 1278c195-49 365-55 510-18 248 63 478 35 690-84v324H0z" fill="#e10600" opacity=".13"/>
+  <rect x="112" y="120" width="976" height="1260" fill="none" stroke="#111" stroke-width="18"/>
+  <path d="M426 318h348l72 180-104 48-36-78v472H494V468l-36 78-104-48z" fill="#111"/>
+  <path d="M506 599c77-96 171-117 282-65M507 720c84-38 164-40 240-6M511 840c115-79 226-89 333-28" fill="none" stroke="#fff" stroke-width="20"/>
+  <path d="M207 1078h790M207 1134h520M207 1190h650" stroke="#111" stroke-width="17"/>
+  <path d="M207 238h390v88H207z" fill="#e10600"/>
+</svg>

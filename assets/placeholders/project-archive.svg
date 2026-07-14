@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="MICASA archive placeholder">
+  <rect width="1200" height="1500" fill="#fff"/>
+  <path d="M0 0c171 92 319 115 444 68 177-66 337-45 756 92V0z" fill="#e10600" opacity=".16"/>
+  <path d="M0 1320c190-100 375-123 556-69 210 63 420 48 644-45v294H0z" fill="#e10600" opacity=".12"/>
+  <g fill="none" stroke="#111" stroke-width="14">
+    <rect x="96" y="112" width="430" height="620"/>
+    <rect x="674" y="190" width="410" height="520"/>
+    <rect x="162" y="820" width="860" height="520"/>
+    <path d="M146 246h316M146 300h270M724 306h270M724 360h236M232 962h650M232 1016h520M232 1070h594"/>
+  </g>
+  <path d="M200 480c97-65 190-78 279-40v174c-102-35-195-17-279 54zM728 480c112-42 214-47 306-14v145c-102 41-204 41-306 0zM258 1182c156-76 313-81 470-16v86c-174 57-331 38-470-56z" fill="#111"/>
+  <path d="M96 112h430v88H96zM674 190h410v88H674zM162 820h430v88H162z" fill="#e10600"/>
+</svg>

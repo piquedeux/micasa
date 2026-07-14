@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Skaterfilm placeholder">
+  <rect width="1200" height="1500" fill="#fff"/>
+  <path d="M0 0h1200v210c-160-54-310-73-450-56-240 30-470 16-750-74zM0 1250c190-40 350-35 480 16 250 98 490 89 720-30v264H0z" fill="#e10600" opacity=".14"/>
+  <rect x="130" y="130" width="940" height="1240" fill="none" stroke="#111" stroke-width="18"/>
+  <path d="M200 870c170-98 340-127 510-87 155 37 252 20 330-51v240c-110 85-242 101-396 47-158-55-306-29-444 79z" fill="#111"/>
+  <path d="M250 640c135 52 246 43 335-27 109-85 227-92 355-20" fill="none" stroke="#111" stroke-width="20"/>
+  <circle cx="345" cy="763" r="39" fill="#111"/>
+  <circle cx="772" cy="747" r="39" fill="#111"/>
+  <path d="M228 348h540M228 404h366M228 460h620" stroke="#111" stroke-width="17"/>
+  <path d="M228 1160h504v92H228z" fill="#e10600"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Donation shirt placeholder">
+  <rect width="1200" height="1500" fill="#fff"/>
+  <path d="M0 0c226 95 439 113 641 54 228-67 414-41 559 77V0zM0 1205c185-81 367-95 545-42 249 74 468 46 655-84v421H0z" fill="#e10600" opacity=".14"/>
+  <rect x="116" y="120" width="968" height="1260" fill="none" stroke="#111" stroke-width="18"/>
+  <path d="M390 352h420l86 190-126 62-42-84v460H472V520l-42 84-126-62z" fill="#111"/>
+  <path d="M600 505v280M460 645h280" stroke="#fff" stroke-width="34"/>
+  <path d="M218 1115h742M218 1171h550M218 1227h660" stroke="#111" stroke-width="17"/>
+  <path d="M218 250h585v88H218z" fill="#e10600"/>
+</svg>

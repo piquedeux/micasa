@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Consumption addict placeholder">
+  <rect width="1200" height="1500" fill="#fff"/>
+  <path d="M0 0c185 82 363 98 535 49 220-63 442-39 665 70V0zM0 1188c245-98 460-113 646-46 198 71 383 65 554-17v375H0z" fill="#e10600" opacity=".16"/>
+  <rect x="116" y="116" width="968" height="1268" fill="none" stroke="#111" stroke-width="18"/>
+  <path d="M374 360h452l86 214-130 60-45-96v498H463V538l-45 96-130-60z" fill="#111"/>
+  <path d="M453 455l100 95-102 99 114 98-96 113 154-81 80 121 18-143 142 14-112-94 78-124-145 39-63-137-41 126z" fill="#fff"/>
+  <path d="M218 1112h750M218 1168h596M218 1224h710" stroke="#111" stroke-width="17"/>
+  <path d="M218 248h558v90H218z" fill="#e10600"/>
+</svg>

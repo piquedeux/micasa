@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Portrait placeholder">
+  <rect width="1200" height="1500" fill="#fff"/>
+  <path d="M0 0c206 69 396 74 570 14 234-80 444-56 630 72V0zM0 1260c216-58 408-61 578-10 241 73 449 52 622-63v313H0z" fill="#e10600" opacity=".13"/>
+  <rect x="106" y="106" width="988" height="1288" fill="none" stroke="#111" stroke-width="18"/>
+  <rect x="280" y="274" width="640" height="690" fill="#111"/>
+  <circle cx="600" cy="520" r="132" fill="#fff"/>
+  <path d="M410 900c38-158 102-237 190-237s152 79 190 237z" fill="#fff"/>
+  <path d="M330 1066h600M330 1122h420M330 1178h520" stroke="#111" stroke-width="17"/>
+  <path d="M215 216h450v88H215z" fill="#e10600"/>
+</svg>
