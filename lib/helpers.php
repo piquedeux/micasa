@@ -41,7 +41,7 @@ function base_path(): string
 
     $script = $_SERVER['SCRIPT_NAME'] ?? '';
     $dir = str_replace('\\', '/', dirname($script));
-    if (str_ends_with($dir, '/admin')) {
+    if (str_ends_with($dir, '/admin') || str_ends_with($dir, '/panel')) {
         $dir = dirname($dir);
     }
 
@@ -60,6 +60,93 @@ function url_for(string $path = ''): string
 function asset_url(string $path): string
 {
     return url_for($path);
+}
+
+function current_lang(): string
+{
+    static $lang = null;
+
+    if ($lang !== null) {
+        return $lang;
+    }
+
+    $requested = strtolower((string) ($_GET['lang'] ?? ''));
+    if (in_array($requested, ['de', 'en'], true)) {
+        $lang = $requested;
+        setcookie('micasa_lang', $lang, time() + 31536000, base_path() === '' ? '/' : base_path() . '/', '', !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off', true);
+
+        return $lang;
+    }
+
+    $cookie = strtolower((string) ($_COOKIE['micasa_lang'] ?? ''));
+    if (in_array($cookie, ['de', 'en'], true)) {
+        return $lang = $cookie;
+    }
+
+    $browser = strtolower((string) ($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? ''));
+
+    return $lang = str_starts_with($browser, 'de') ? 'de' : 'en';
+}
+
+function tr(string $de, string $en): string
+{
+    return current_lang() === 'de' ? $de : $en;
+}
+
+function localized(array $item, string $field): string
+{
+    $lang = current_lang();
+    $primary = trim((string) ($item[$field . '_' . $lang] ?? ''));
+    if ($primary !== '') {
+        return $primary;
+    }
+
+    $fallback_lang = $lang === 'de' ? 'en' : 'de';
+    $fallback = trim((string) ($item[$field . '_' . $fallback_lang] ?? ''));
+
+    return $fallback !== '' ? $fallback : trim((string) ($item[$field] ?? ''));
+}
+
+function language_url(string $lang): string
+{
+    $params = $_GET;
+    $params['lang'] = $lang;
+    $path = strtok((string) ($_SERVER['REQUEST_URI'] ?? ''), '?') ?: '';
+
+    return $path . '?' . http_build_query($params);
+}
+
+function upload_images(): array
+{
+    $upload_dir = dirname(__DIR__) . '/assets/uploads';
+    $files = glob($upload_dir . '/*') ?: [];
+    $images = [];
+
+    foreach ($files as $file) {
+        if (!is_file($file)) {
+            continue;
+        }
+
+        $name = basename($file);
+        if ($name === '.gitkeep' || $name === '.htaccess') {
+            continue;
+        }
+
+        $images[] = asset_url('assets/uploads/' . rawurlencode($name));
+    }
+
+    return $images;
+}
+
+function rotating_upload_image(int $index = 0, ?string $fallback = null): ?string
+{
+    $images = upload_images();
+
+    if ($images !== []) {
+        return $images[$index % count($images)];
+    }
+
+    return $fallback;
 }
 
 function read_json_file(string $path, array $fallback = []): array

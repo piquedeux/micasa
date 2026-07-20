@@ -1,6 +1,11 @@
 Options -Indexes
 DirectoryIndex index.php
 
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^panel/?$ panel/index.php [L,QSA]
+</IfModule>
+
 <FilesMatch "^(config\.php|config\.local\.php|config\.local\.example\.php)$">
   Require all denied
 </FilesMatch>

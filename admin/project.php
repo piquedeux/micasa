@@ -16,7 +16,7 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_check();
     $existing_id = trim((string) ($_POST['existing_id'] ?? ''));
-    $image = trim((string) ($_POST['image'] ?? 'assets/placeholders/project-blank.svg'));
+    $image = trim((string) ($_POST['image'] ?? ''));
     $uploaded = isset($_FILES['image_upload']) ? handle_project_upload($_FILES['image_upload']) : null;
 
     if ($uploaded !== null) {
@@ -25,27 +25,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $payload = [
         'id' => trim((string) ($_POST['id'] ?? '')),
-        'title' => trim((string) ($_POST['title'] ?? '')),
-        'kicker' => trim((string) ($_POST['kicker'] ?? '')),
+        'title_de' => trim((string) ($_POST['title_de'] ?? '')),
+        'title_en' => trim((string) ($_POST['title_en'] ?? '')),
+        'kicker_de' => trim((string) ($_POST['kicker_de'] ?? '')),
+        'kicker_en' => trim((string) ($_POST['kicker_en'] ?? '')),
         'status' => trim((string) ($_POST['status'] ?? '')),
         'type' => trim((string) ($_POST['type'] ?? '')),
         'release_order' => (int) ($_POST['release_order'] ?? 99),
-        'summary' => trim((string) ($_POST['summary'] ?? '')),
-        'body' => trim((string) ($_POST['body'] ?? '')),
+        'summary_de' => trim((string) ($_POST['summary_de'] ?? '')),
+        'summary_en' => trim((string) ($_POST['summary_en'] ?? '')),
+        'body_de' => trim((string) ($_POST['body_de'] ?? '')),
+        'body_en' => trim((string) ($_POST['body_en'] ?? '')),
         'image' => $image,
         'video_url' => trim((string) ($_POST['video_url'] ?? '')),
         'artists' => trim((string) ($_POST['artists'] ?? '')),
-        'shopify_handle' => trim((string) ($_POST['shopify_handle'] ?? '')),
+        'bigcartel_handle' => trim((string) ($_POST['bigcartel_handle'] ?? '')),
         'published' => isset($_POST['published']),
         'featured' => isset($_POST['featured']),
     ];
 
-    if ($payload['title'] === '') {
+    if ($payload['title_de'] === '' && $payload['title_en'] === '') {
         $error = 'TITLE REQUIRED';
         $project = array_replace(project_blank(), $payload);
     } else {
         $saved = project_save($payload, $existing_id !== '' ? $existing_id : null);
-        header('Location: ' . url_for('admin/index.php#' . rawurlencode((string) $saved['id'])));
+        header('Location: ' . panel_url('#' . rawurlencode((string) $saved['id'])));
         exit;
     }
 }
@@ -56,7 +60,7 @@ include __DIR__ . '/../partials/header.php';
 ?>
 
 <section class="admin-layout">
-  <form class="paper admin-form project-form" method="post" enctype="multipart/form-data" action="<?= e(url_for('admin/project.php' . ($existing_id !== '' ? '?id=' . rawurlencode($existing_id) : ''))) ?>">
+  <form class="paper admin-form project-form" method="post" enctype="multipart/form-data" action="<?= e(panel_url('project.php' . ($existing_id !== '' ? '?id=' . rawurlencode($existing_id) : ''))) ?>">
     <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
     <input type="hidden" name="existing_id" value="<?= e($existing_id) ?>">
     <p class="spiked-label"><?= $existing_id === '' ? 'NEW PROJECT' : 'EDIT PROJECT' ?></p>
@@ -73,12 +77,20 @@ include __DIR__ . '/../partials/header.php';
         <input type="number" name="release_order" value="<?= e((string) ($project['release_order'] ?? 99)) ?>">
       </label>
       <label>
-        TITLE
-        <input type="text" name="title" value="<?= e((string) ($project['title'] ?? '')) ?>" required>
+        TITLE DE
+        <input type="text" name="title_de" value="<?= e((string) ($project['title_de'] ?? $project['title'] ?? '')) ?>">
       </label>
       <label>
-        KICKER
-        <input type="text" name="kicker" value="<?= e((string) ($project['kicker'] ?? '')) ?>">
+        TITLE EN
+        <input type="text" name="title_en" value="<?= e((string) ($project['title_en'] ?? '')) ?>">
+      </label>
+      <label>
+        KICKER DE
+        <input type="text" name="kicker_de" value="<?= e((string) ($project['kicker_de'] ?? $project['kicker'] ?? '')) ?>">
+      </label>
+      <label>
+        KICKER EN
+        <input type="text" name="kicker_en" value="<?= e((string) ($project['kicker_en'] ?? '')) ?>">
       </label>
       <label>
         STATUS
@@ -93,18 +105,18 @@ include __DIR__ . '/../partials/header.php';
         <input type="text" name="artists" value="<?= e((string) ($project['artists'] ?? '')) ?>">
       </label>
       <label>
-        SHOPIFY HANDLE
-        <input type="text" name="shopify_handle" value="<?= e((string) ($project['shopify_handle'] ?? '')) ?>">
+        BIGCARTEL HANDLE
+        <input type="text" name="bigcartel_handle" value="<?= e((string) ($project['bigcartel_handle'] ?? '')) ?>">
       </label>
     </div>
-    <label>
-      SUMMARY
-      <textarea name="summary" rows="4"><?= e((string) ($project['summary'] ?? '')) ?></textarea>
-    </label>
-    <label>
-      BODY
-      <textarea name="body" rows="10"><?= e((string) ($project['body'] ?? '')) ?></textarea>
-    </label>
+    <div class="form-grid">
+      <label>SUMMARY DE<textarea name="summary_de" rows="4"><?= e((string) ($project['summary_de'] ?? $project['summary'] ?? '')) ?></textarea></label>
+      <label>SUMMARY EN<textarea name="summary_en" rows="4"><?= e((string) ($project['summary_en'] ?? '')) ?></textarea></label>
+    </div>
+    <div class="form-grid">
+      <label>BODY DE<textarea name="body_de" rows="10"><?= e((string) ($project['body_de'] ?? $project['body'] ?? '')) ?></textarea></label>
+      <label>BODY EN<textarea name="body_en" rows="10"><?= e((string) ($project['body_en'] ?? '')) ?></textarea></label>
+    </div>
     <div class="form-grid">
       <label>
         IMAGE PATH OR URL
@@ -129,7 +141,7 @@ include __DIR__ . '/../partials/header.php';
     </div>
     <div class="button-row">
       <button class="stroke-button" type="submit">SAVE</button>
-      <a class="stroke-button" href="<?= e(url_for('admin/index.php')) ?>">CANCEL</a>
+      <a class="stroke-button" href="<?= e(panel_url()) ?>">CANCEL</a>
     </div>
   </form>
 </section>

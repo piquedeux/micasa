@@ -11,7 +11,7 @@ This project is a no-build PHP frontend. Upload the folder contents to any PHP-c
    - Keep `allow_tokenless => false` unless you intentionally want Shopify tokenless Storefront API calls.
 3. Set a real admin password hash in `config.local.php`.
 4. Make `data/` and `assets/uploads/` writable by PHP.
-5. Open `/admin/index.php` to manage MICASA projects.
+5. Open `/panel/` to manage MICASA projects.
 
 ## Admin Login
 
@@ -27,6 +27,10 @@ php -r "echo password_hash('your-new-password', PASSWORD_DEFAULT), PHP_EOL;"
 ```
 
 Put that hash into `config.local.php`.
+
+## FTP Notes
+
+Upload the project contents as-is. The admin entry point is the `panel/` folder, so both `/panel/` and `/panel/index.php` work on typical PHP hosts. Keep the included `.htaccess` files when uploading; they protect PHP library files, partials, config files, and JSON data from direct browser access.
 
 ## Shopify Notes
 

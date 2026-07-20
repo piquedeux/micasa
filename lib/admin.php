@@ -8,6 +8,15 @@ function admin_boot(): void
 {
     if (session_status() === PHP_SESSION_NONE) {
         session_name((string) app_config('admin.session_name', 'micasa_admin'));
+        $cookie_path = base_path();
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path' => $cookie_path === '' ? '/' : $cookie_path . '/',
+            'domain' => '',
+            'secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
+            'httponly' => true,
+            'samesite' => 'Lax',
+        ]);
         session_start();
     }
 }
@@ -19,10 +28,25 @@ function admin_is_logged_in(): bool
     return !empty($_SESSION['admin_logged_in']);
 }
 
+function panel_url(string $path = ''): string
+{
+    $path = ltrim($path, '/');
+
+    if ($path === '') {
+        return url_for('panel/');
+    }
+
+    if (str_starts_with($path, '#') || str_starts_with($path, '?')) {
+        return url_for('panel/' . $path);
+    }
+
+    return url_for('panel/' . $path);
+}
+
 function admin_require_login(): void
 {
     if (!admin_is_logged_in()) {
-        header('Location: ' . url_for('admin/index.php'));
+        header('Location: ' . panel_url());
         exit;
     }
 }

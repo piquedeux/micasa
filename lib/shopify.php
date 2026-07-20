@@ -168,6 +168,7 @@ query Products($first: Int!) {
     edges {
       node {
         id
+        id
         title
         handle
         description
@@ -238,6 +239,7 @@ GRAPHQL;
 
 function shopify_normalize_product(array $node, string $mode): array
 {
+  $id = (string) ($node['id'] ?? '');
     $image = $node['featuredImage'] ?? [];
     $variant = $node['variants']['edges'][0]['node'] ?? [];
     $price = $mode === 'admin' ? ($node['priceRangeV2']['minVariantPrice'] ?? null) : ($node['priceRange']['minVariantPrice'] ?? null);
@@ -247,6 +249,7 @@ function shopify_normalize_product(array $node, string $mode): array
 
     return [
         'id' => (string) ($node['id'] ?? ''),
+        'buy_button_id' => shopify_buy_button_id($id),
         'title' => (string) ($node['title'] ?? ''),
         'handle' => $handle,
         'description' => $description,
@@ -258,3 +261,16 @@ function shopify_normalize_product(array $node, string $mode): array
         'url' => $online_url !== '' ? $online_url : 'https://' . shopify_domain() . '/products/' . rawurlencode($handle),
     ];
 }
+
+    function shopify_buy_button_id(string $gid): string
+    {
+      if ($gid === '') {
+        return '';
+      }
+
+      if (preg_match('/(\d+)$/', $gid, $match) === 1) {
+        return $match[1];
+      }
+
+      return '';
+    }

@@ -1,0 +1,19 @@
+{
+    "products": {
+        "c18f553d4128f83510ad0236b071475f": {
+            "saved_at": 1784423195,
+            "product": {
+                "handle": "uniform-head",
+                "title": "Uniform Head",
+                "image": "https://assets.bigcartel.com/product_images/94565a84-1f7a-436d-b230-7acf793153d1/uniform-head.gif?auto=format&fit=max&h=1200&w=1200",
+                "image_alt": "Uniform Head",
+                "price_label": "",
+                "available": true,
+                "description": "Uniform Head — R2S",
+                "url": "https://r2s.bigcartel.com/product/uniform-head",
+                "storefront_url": "https://r2s.bigcartel.com",
+                "cart_url": "https://r2s.bigcartel.com/cart"
+            }
+        }
+    }
+}

@@ -7,5 +7,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 admin_logout();
-header('Location: ' . url_for('admin/index.php'));
+header('Location: ' . panel_url());
 exit;

@@ -15,6 +15,16 @@ return array_replace_recursive([
         'allow_tokenless' => false,
         'cache_ttl' => 600,
     ],
+    'bigcartel' => [
+        'storefront_url' => 'https://r2s.bigcartel.com',
+        'cache_ttl' => 3600,
+        'products' => [
+            [
+                'handle' => 'uniform-head',
+                'url' => 'https://r2s.bigcartel.com/product/uniform-head',
+            ],
+        ],
+    ],
     'admin' => [
         'username' => getenv('MICASA_ADMIN_USER') ?: 'admin',
         'password_hash' => getenv('MICASA_ADMIN_PASSWORD_HASH') ?: '$2y$12$S82kND8By/mqtCJZNNMiBOauVwSJj5vFRJmLXsrhZhCaJBMCqURlO',
@@ -22,7 +32,9 @@ return array_replace_recursive([
     ],
     'storage' => [
         'projects' => __DIR__ . '/data/projects.json',
+        'site_content' => __DIR__ . '/data/site-content.json',
         'shopify_cache' => __DIR__ . '/data/shopify-cache.json',
+        'bigcartel_cache' => __DIR__ . '/data/bigcartel-cache.json',
         'uploads_dir' => __DIR__ . '/assets/uploads',
         'uploads_url' => 'assets/uploads',
     ],

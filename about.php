@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/lib/bootstrap.php';
 
+$about = site_content_section('about');
 $page_title = 'MICASA INFO';
 $body_class = 'page-about';
 
@@ -10,21 +11,9 @@ include __DIR__ . '/partials/header.php';
 
 <section class="about-layout">
   <article class="paper">
-    <p class="spiked-label">C1 / WAS IST MICASA</p>
-    <h1>MICASA IST EINE OFFENE PLATTFORM FÜR KREATIVE PROJEKTE.</h1>
-    <p>MICASA VERBINDET MODE, FILM, MUSIK, DESIGN UND GESELLSCHAFTLICH RELEVANTE THEMEN. IM ZENTRUM STEHEN NICHT NUR DIE ERGEBNISSE, SONDERN DIE GESCHICHTEN, HALTUNGEN UND KOOPERATIONEN, AUS DENEN SIE ENTSTEHEN.</p>
-  </article>
-  <article class="paper">
-    <p class="spiked-label">STRUKTUR / ARBEITSWEISE</p>
-    <p>DAS PROJEKT WIRD VON EINEM KLEINEN KERNTEAM ORGANISIERT. KOLLEKTION, WEBSITE, FILME, KAMPAGNEN UND DESIGNS ENTSTEHEN IN GEMEINSAMER PLANUNG UND MIT EXTERNEN ARTISTS UND PARTNERN.</p>
-  </article>
-  <article class="paper">
-    <p class="spiked-label">LANGFRISTIGE VISION</p>
-    <p>MICASA SOLL SICH ZU EINEM NETZWERK AUS KÜNSTLERINNEN, FILMEMACHERINNEN, MUSIKERINNEN UND GESTALTERINNEN ENTWICKELN, DIE AN INTERDISZIPLINÄREN ARBEITEN, KOLLEKTIONEN, FILMEN, MUSIKPRODUKTIONEN UND SOZIALEN PROJEKTEN ARBEITEN.</p>
-  </article>
-  <article class="paper">
-    <p class="spiked-label">WARUM DAS BESONDERS IST</p>
-    <p>WIR GLAUBEN AN KUNST, DIE ETWAS AUSLÖST. NICHT NUR KLICKS, SONDERN GEDANKEN. WIR ERZÄHLEN GESCHICHTEN, ABER WIR MACHEN KEINE SHOW. WIR BAUEN KAMPAGNEN, ABER KEINE FASSADE.</p>
+    <p class="spiked-label"><?= e(tr('WAS IST MICASA', 'WHAT IS MICASA')) ?></p>
+    <h1><?= e(localized($about, 'heading')) ?></h1>
+    <div class="body-copy"><?= nl2br(e(localized($about, 'body'))) ?></div>
   </article>
 </section>
 

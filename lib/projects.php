@@ -43,16 +43,24 @@ function project_blank(): array
     return [
         'id' => '',
         'title' => '',
+        'title_de' => '',
+        'title_en' => '',
         'kicker' => '',
+        'kicker_de' => '',
+        'kicker_en' => '',
         'status' => 'DRAFT',
         'type' => 'CAMPAIGN',
         'release_order' => 99,
         'summary' => '',
+        'summary_de' => '',
+        'summary_en' => '',
         'body' => '',
-        'image' => 'assets/placeholders/project-blank.svg',
+        'body_de' => '',
+        'body_en' => '',
+        'image' => '',
         'video_url' => '',
         'artists' => '',
-        'shopify_handle' => '',
+        'bigcartel_handle' => '',
         'published' => true,
         'featured' => false,
     ];
@@ -61,7 +69,9 @@ function project_blank(): array
 function project_save(array $incoming, ?string $existing_id = null): array
 {
     $projects = projects_all(true);
-    $title = trim((string) ($incoming['title'] ?? ''));
+    $title_de = trim((string) ($incoming['title_de'] ?? ''));
+    $title_en = trim((string) ($incoming['title_en'] ?? ''));
+    $title = trim((string) ($incoming['title'] ?? ($title_de !== '' ? $title_de : $title_en)));
     $id = trim((string) ($incoming['id'] ?? ''));
 
     if ($id === '') {
@@ -71,16 +81,24 @@ function project_save(array $incoming, ?string $existing_id = null): array
     $project = [
         'id' => $id,
         'title' => $title,
+        'title_de' => $title_de,
+        'title_en' => $title_en,
         'kicker' => trim((string) ($incoming['kicker'] ?? '')),
+        'kicker_de' => trim((string) ($incoming['kicker_de'] ?? '')),
+        'kicker_en' => trim((string) ($incoming['kicker_en'] ?? '')),
         'status' => trim((string) ($incoming['status'] ?? '')),
         'type' => trim((string) ($incoming['type'] ?? 'CAMPAIGN')),
         'release_order' => (int) ($incoming['release_order'] ?? 99),
         'summary' => trim((string) ($incoming['summary'] ?? '')),
+        'summary_de' => trim((string) ($incoming['summary_de'] ?? '')),
+        'summary_en' => trim((string) ($incoming['summary_en'] ?? '')),
         'body' => trim((string) ($incoming['body'] ?? '')),
-        'image' => trim((string) ($incoming['image'] ?? 'assets/placeholders/project-blank.svg')),
+        'body_de' => trim((string) ($incoming['body_de'] ?? '')),
+        'body_en' => trim((string) ($incoming['body_en'] ?? '')),
+        'image' => trim((string) ($incoming['image'] ?? '')),
         'video_url' => trim((string) ($incoming['video_url'] ?? '')),
         'artists' => trim((string) ($incoming['artists'] ?? '')),
-        'shopify_handle' => trim((string) ($incoming['shopify_handle'] ?? '')),
+        'bigcartel_handle' => trim((string) ($incoming['bigcartel_handle'] ?? '')),
         'published' => !empty($incoming['published']),
         'featured' => !empty($incoming['featured']),
         'updated_at' => date('c'),

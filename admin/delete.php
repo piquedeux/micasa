@@ -5,7 +5,7 @@ require_once __DIR__ . '/../lib/admin.php';
 admin_require_login();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ' . url_for('admin/index.php'));
+    header('Location: ' . panel_url());
     exit;
 }
 
@@ -15,5 +15,5 @@ if ($id !== '') {
     project_delete($id);
 }
 
-header('Location: ' . url_for('admin/index.php'));
+header('Location: ' . panel_url());
 exit;
